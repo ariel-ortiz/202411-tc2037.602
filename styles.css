@@ -1,0 +1,63 @@
+body {
+  background-color: AliceBlue;
+  color: MidnightBlue;
+  font-family: sans-serif;
+  margin: 30px;
+}
+
+table, th, td {
+  border: 1px solid CornflowerBlue;
+  border-collapse: collapse;
+  padding: 6px 20px;
+}
+
+h1 {
+  color: RoyalBlue;
+  padding: 6px 10px;
+  margin-top: 50px;
+}
+
+pre {
+  font-size: 160%;
+  margin: 20px;
+  border: 1px solid Black;
+  padding: 30px;
+  color: Black;
+  background-color: White;
+}
+
+.flotante {
+  color: Green;
+}
+
+.variable {
+  color: DeepPink;
+}
+
+.entero {
+  color: DarkOrange;
+}
+
+.comentario {
+  color: LightSlateGray;
+  font-style: italic;
+}
+
+.asignacion,
+.suma,
+.resta,
+.multiplicacion,
+.division,
+.potencia,
+.par-izq,
+.par-der {
+  color: Blue;
+  font-weight: bold;
+}
+
+.error {
+  background-color: Red;
+  color: white;
+  padding: 3px 5px;
+  font-weight: bold;
+}
