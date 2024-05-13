@@ -55,19 +55,19 @@
   []
   (println (apply str (repeat 56 \=))))
 
-(def termino {:flotante "Floatente"
-              :variable "Variable"
-              :comentario "Comentario"
-              :entero "Entero"
-              :asignacion "Asignación"
-              :suma "Suma"
-              :resta "Resta"
+(def termino {:flotante       "Floatente"
+              :variable       "Variable"
+              :comentario     "Comentario"
+              :entero         "Entero"
+              :asignacion     "Asignación"
+              :suma           "Suma"
+              :resta          "Resta"
               :multiplicacion "Multiplicación"
-              :division "Division"
-              :potencia "Potencia"
-              :par-izq "Paréntesis que abre"
-              :par-der "Peréntesis que cierra"
-              :error "Token inválido"})
+              :division       "Division"
+              :potencia       "Potencia"
+              :par-izq        "Paréntesis que abre"
+              :par-der        "Peréntesis que cierra"
+              :error          "Token inválido"})
 
 (defn print-table
   [file-name]
@@ -80,4 +80,29 @@
                      (termino (token 0)))))
   (separador))
 
-(spit "salida.txt" (with-out-str (print-table "entrada.txt")))
+; (spit "salida.txt" (with-out-str (print-table "entrada.txt")))
+
+(def html-template (slurp "template.html"))
+
+(defn htmlize
+  [lst]
+  (map (fn [[t v]]
+         (format "<tr>
+                     <td class=\"%s\">%s</td>
+                     <td>%s</td>
+                  </tr>
+                  "
+                 (symbol t)
+                 v
+                 (termino t)))
+       lst))
+
+(defn txt->html
+  [in-name out-name]
+  (let [file-content (slurp in-name)]
+    (spit out-name
+          (format html-template
+                  file-content
+                  (apply str (htmlize (tokenize file-content)))))))
+
+(txt->html "entrada.txt" "resultado.html")
