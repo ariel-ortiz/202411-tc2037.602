@@ -64,6 +64,18 @@
                       \_ [\_ :left :q2]}
                  :q1 {\a [\a :right :q0]}}))
 
-(accepts tm-1 "aaaaaa")
+(deftest test-problem1
+  (is (= "[_]"
+         (accepts tm-1 "")))
+  (is (= "a[a]"
+         (accepts tm-1 "aa")))
+  (is (= "aaaaaaa[a]"
+         (accepts tm-1 "aaaaaaaa")))
+  (is (= "aaaaaaaaaaaaaaaaaaaaaaaaa[a]"
+         (accepts tm-1 "aaaaaaaaaaaaaaaaaaaaaaaaaa")))
+  (is (nil? (accepts tm-1 "a")))
+  (is (nil? (accepts tm-1 "aaa")))
+  (is (nil? (accepts tm-1 "aaaaaaa")))
+  (is (nil? (accepts tm-1 "aaaaaaaaaaaaaaaaaaaaaaaaa"))))
 
 (run-tests)
